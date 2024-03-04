@@ -27,13 +27,13 @@ doc/api/
 .flutter-plugins-dependencies
 
 
-./android
-./ios
-./linux
-./macos
-./test
-./web
-./windows
-./.gitignore
-./.metadata
-./analysis_options.yaml
+*/android
+*/ios
+*/linux
+*/macos
+*/test
+*/web
+*/windows
+*/.gitignore
+*/.metadata
+*/analysis_options.yaml
