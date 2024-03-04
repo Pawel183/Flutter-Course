@@ -7,6 +7,20 @@ build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
 
+# Specific directories for mobile, web, and desktop platforms
+**/android/
+**/ios/
+**/linux/
+**/macos/
+**/test/
+**/web/
+**/windows/
+
+# Various config files
+**/.gitignore
+**/.metadata
+**/analysis_options.yaml
+
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
 doc/api/
@@ -25,15 +39,3 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
-
-
-*/android
-*/ios
-*/linux
-*/macos
-*/test
-*/web
-*/windows
-*/.gitignore
-*/.metadata
-*/analysis_options.yaml
