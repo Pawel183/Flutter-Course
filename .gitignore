@@ -20,6 +20,8 @@ pubspec.lock
 **/.gitignore
 **/.metadata
 **/analysis_options.yaml
+**/pubspec.lock
+**/README.md
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
