@@ -25,3 +25,15 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+
+./android
+./ios
+./linux
+./macos
+./test
+./web
+./windows
+./.gitignore
+./.metadata
+./analysis_options.yaml
