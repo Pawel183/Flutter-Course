@@ -8,7 +8,7 @@ import 'package:football_teams_app/data/teams/newcastle.dart';
 import 'package:football_teams_app/data/teams/palmeiras.dart';
 import 'package:football_teams_app/models/team_with_players.dart';
 
-final List<TeamWithPlayers> teams = [
+final List<TeamWithPlayers> teamsWithPlayers = [
   manchesterUnited,
   ajaccio,
   bologna,

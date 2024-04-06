@@ -248,7 +248,7 @@ final List<Player> players =
     teamId: teamData?["id"] as int? ?? 0,
     name: playerData["name"] as String,
     age: playerData["age"] as int,
-    number: playerData["number"] as int,
+    number: playerData["number"] as dynamic,
     position: playerData["position"] as String,
     photo: playerData["photo"] as String,
   );

@@ -46,7 +46,7 @@ const data = [
         "id": 402524,
         "name": "A. Harrison",
         "age": 17,
-        "number": "None",
+        "number": 55,
         "position": "Goalkeeper",
         "photo": "https://media.api-sports.io/football/players/402524.png"
       },
@@ -238,7 +238,7 @@ const data = [
         "id": 284373,
         "name": "L. De Bolle",
         "age": 20,
-        "number": "None",
+        "number": 32,
         "position": "Midfielder",
         "photo": "https://media.api-sports.io/football/players/284373.png"
       },
@@ -246,7 +246,7 @@ const data = [
         "id": 284375,
         "name": "James Alan Huntley",
         "age": 18,
-        "number": "None",
+        "number": 65,
         "position": "Midfielder",
         "photo": "https://media.api-sports.io/football/players/284375.png"
       },
@@ -312,7 +312,7 @@ final List<Player> players =
     teamId: teamData?["id"] as int? ?? 0,
     name: playerData["name"] as String,
     age: playerData["age"] as int,
-    number: playerData["number"] as int,
+    number: playerData["number"] as dynamic,
     position: playerData["position"] as String,
     photo: playerData["photo"] as String,
   );

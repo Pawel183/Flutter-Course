@@ -30,7 +30,7 @@ const data = [
         "id": 348897,
         "name": "Kaique",
         "age": 20,
-        "number": "None",
+        "number": 33,
         "position": "Goalkeeper",
         "photo": "https://media.api-sports.io/football/players/348897.png"
       },
@@ -287,7 +287,7 @@ final List<Player> players =
     teamId: teamData?["id"] as int? ?? 0,
     name: playerData["name"] as String,
     age: playerData["age"] as int,
-    number: playerData["number"] as int,
+    number: playerData["number"] as dynamic,
     position: playerData["position"] as String,
     photo: playerData["photo"] as String,
   );
