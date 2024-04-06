@@ -6,24 +6,33 @@ class PlayersScreen extends StatelessWidget {
   const PlayersScreen({
     super.key,
     required this.players,
+    required this.teamName,
   });
 
   final List<Player> players;
+  final String teamName;
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 15,
-        crossAxisSpacing: 15,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("$teamName players"),
       ),
-      padding: const EdgeInsets.all(15),
-      itemBuilder: (context, index) {
-        return PlayerGridItem(
-          player: players[index],
-        );
-      },
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 10,
+          childAspectRatio: (.1 / .13)
+        ),
+        padding: const EdgeInsets.all(15),
+        itemCount: players.length,
+        itemBuilder: (context, index) {
+          return PlayerGridItem(
+            player: players[index],
+          );
+        },
+      ),
     );
   }
 }

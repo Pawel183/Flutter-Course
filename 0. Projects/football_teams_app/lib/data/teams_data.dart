@@ -17,4 +17,6 @@ final List<TeamWithPlayers> teamsWithPlayers = [
   furth,
   newcastle,
   palmeiras,
+  manchesterUnited,
+  derby,
 ];

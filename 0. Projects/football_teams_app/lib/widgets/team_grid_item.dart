@@ -6,17 +6,17 @@ class TeamGridItem extends StatelessWidget {
     super.key,
     required this.teamWithPlayers,
     required this.color,
+    required this.onSelectTeam,
   });
 
   final TeamWithPlayers teamWithPlayers;
   final Color color;
+  final void Function() onSelectTeam;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        
-      },
+      onTap: onSelectTeam,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         padding: const EdgeInsets.all(5),

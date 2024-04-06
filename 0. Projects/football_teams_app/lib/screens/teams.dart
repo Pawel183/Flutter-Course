@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:football_teams_app/models/player.dart';
 import 'package:football_teams_app/providers/teams_provider.dart';
+import 'package:football_teams_app/screens/players.dart';
 import 'package:football_teams_app/widgets/team_grid_item.dart';
 
 Color generateRandomColor() {
@@ -17,7 +19,21 @@ Color generateRandomColor() {
 }
 
 class TeamsScreen extends ConsumerWidget {
-  const TeamsScreen({super.key});
+  const TeamsScreen({
+    super.key,
+  });
+
+  void _selectTeam(BuildContext context, List<Player> players, String teamName) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => PlayersScreen(
+          players: players,
+          teamName: teamName,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,6 +52,9 @@ class TeamsScreen extends ConsumerWidget {
         return TeamGridItem(
           teamWithPlayers: teams[index],
           color: generateRandomColor(),
+          onSelectTeam: () {
+            _selectTeam(context, teams[index].players, teams[index].team.name);
+          },
         );
       },
     );

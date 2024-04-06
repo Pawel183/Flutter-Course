@@ -11,6 +11,28 @@ class PlayerGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(player.name);
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(20),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.network(player.photo),
+          const SizedBox(height: 10),
+          Text(
+            player.name,
+            style: const TextStyle(
+              fontSize: 16,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
   }
 }
