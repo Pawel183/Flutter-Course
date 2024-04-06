@@ -7,11 +7,11 @@ class PlayersScreen extends StatelessWidget {
   const PlayersScreen({
     super.key,
     required this.players,
-    required this.teamName,
+    required this.label,
   });
 
   final List<Player> players;
-  final String teamName;
+  final String label;
 
   void _selectPlayer(BuildContext context, Player player) {
     Navigator.of(context).push(
@@ -25,30 +25,37 @@ class PlayersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("$teamName players"),
-      ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 10,
-            childAspectRatio: (.1 / .13)),
-        padding: const EdgeInsets.all(15),
-        itemCount: players.length,
-        itemBuilder: (context, index) {
-          return PlayerGridItem(
-            player: players[index],
-            onSelectPlayer: () {
-              _selectPlayer(
-                context,
-                players[index],
-              );
-            },
-          );
-        },
-      ),
+    final _isFavorite = label == 'Favorite';
+
+    Widget bodyWidget = GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 10,
+          childAspectRatio: (.1 / .13)),
+      padding: const EdgeInsets.all(15),
+      itemCount: players.length,
+      itemBuilder: (context, index) {
+        return PlayerGridItem(
+          player: players[index],
+          onSelectPlayer: () {
+            _selectPlayer(
+              context,
+              players[index],
+            );
+          },
+        );
+      },
     );
+
+    if (_isFavorite) {
+      return Scaffold(body: bodyWidget);
+    }
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("$label players"),
+        ),
+        body: bodyWidget);
   }
 }

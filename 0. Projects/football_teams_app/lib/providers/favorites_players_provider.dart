@@ -10,11 +10,9 @@ class FavoritePlayersNotifier extends StateNotifier<List<Player>> {
 
     if (isPlayerFavorite) {
       state = state.where((element) => element.id != player.id).toList();
-      print(state);
       return false;
     } else {
       state = [...state, player];
-      print(state);
       return true;
     }
   }

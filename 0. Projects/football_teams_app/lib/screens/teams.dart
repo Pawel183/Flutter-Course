@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:football_teams_app/models/player.dart';
+import 'package:football_teams_app/providers/filters_provider.dart';
 import 'package:football_teams_app/providers/teams_provider.dart';
 import 'package:football_teams_app/screens/players.dart';
 import 'package:football_teams_app/widgets/team_grid_item.dart';
@@ -23,21 +24,32 @@ class TeamsScreen extends ConsumerWidget {
     super.key,
   });
 
-  void _selectTeam(BuildContext context, List<Player> players, String teamName) {
+  void _selectTeam(
+      BuildContext context, List<Player> players, String teamName) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (ctx) => PlayersScreen(
           players: players,
-          teamName: teamName,
+          label: teamName,
         ),
       ),
     );
   }
 
+  List<Player> _selectPlayers(
+      List<Player> players, List<String> filtersProvider) {
+    final filteredPlayers = players.where(
+      (player) => filtersProvider.contains(player.position),
+    );
+
+    return filteredPlayers.toList();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final teams = ref.watch(teamsProvider);
+    final filters = ref.watch(filtersProvider);
 
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -53,7 +65,8 @@ class TeamsScreen extends ConsumerWidget {
           teamWithPlayers: teams[index],
           color: generateRandomColor(),
           onSelectTeam: () {
-            _selectTeam(context, teams[index].players, teams[index].team.name);
+            final filteredPlayers = _selectPlayers(teams[index].players, filters);
+            _selectTeam(context, filteredPlayers, teams[index].team.name);
           },
         );
       },
