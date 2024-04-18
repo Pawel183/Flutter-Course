@@ -1,9 +1,16 @@
 import 'package:chess_exercises_app/screens/tabs.dart';
+import 'package:chess_exercises_app/shared_preferences/done_exercise_shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  initData();
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 final theme = ThemeData(
