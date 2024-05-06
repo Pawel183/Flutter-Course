@@ -23,17 +23,19 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
   var _selectedCategory = categories[Categories.hobbies];
 
   void _saveTask() {
-    _formKey.currentState!.save();
-    setState(() {
-      var task = Task(
-        id: uuid.v1(),
-        priority: _selectedPriority,
-        taskLabel: _enteredLabel,
-        category: _selectedCategory!,
-      );
-      ref.read(tasksProvider.notifier).addTask(task);
-      Navigator.pop(context);
-    });
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      setState(() {
+        var task = Task(
+          id: uuid.v1(),
+          priority: _selectedPriority,
+          taskLabel: _enteredLabel,
+          category: _selectedCategory!,
+        );
+        ref.read(tasksProvider.notifier).addTask(task);
+        Navigator.pop(context);
+      });
+    }
   }
 
   @override
