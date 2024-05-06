@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/data/my_categories.dart';
 import 'package:todo_app/models/category.dart';
+import 'package:todo_app/models/task.dart';
+import 'package:todo_app/providers/tasks_provider.dart';
+import 'package:uuid/uuid.dart';
 
-class AddTaskScreen extends StatefulWidget {
+const uuid = Uuid();
+
+class AddTaskScreen extends ConsumerStatefulWidget {
   const AddTaskScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  ConsumerState<ConsumerStatefulWidget> createState() {
     return _AddTaskScreenState();
   }
 }
 
-class _AddTaskScreenState extends State<AddTaskScreen> {
+class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  var _enteredTask = "";
+  var _enteredLabel = "";
   var _selectedPriority = 0;
   var _selectedCategory = categories[Categories.hobbies];
 
   void _saveTask() {
     _formKey.currentState!.save();
-    print(_enteredTask);
-    print(_selectedPriority);
-    print(_selectedCategory);
+    var task = Task(
+      id: uuid.v1(),
+      priority: _selectedPriority,
+      taskLabel: _enteredLabel,
+      category: _selectedCategory!,
+    );
+    ref.read(tasksProvider.notifier).addTask(task);
+    Navigator.pop(context);
   }
 
   @override
@@ -53,15 +64,15 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 validator: (value) {
                   if (value == null ||
                       value.isEmpty ||
-                      value.trim().length > 30) {
-                    return "Characters must be between 1 and 30";
+                      value.trim().length > 25) {
+                    return "Characters must be between 1 and 25";
                   }
                   return null;
                 },
                 onSaved: (value) {
-                  _enteredTask = value!;
+                  _enteredLabel = value!;
                 },
-                maxLength: 30,
+                maxLength: 25,
                 decoration: const InputDecoration(
                   label: Text("Task"),
                 ),

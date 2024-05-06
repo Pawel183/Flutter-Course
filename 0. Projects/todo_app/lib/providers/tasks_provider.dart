@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/data/example_tasks.dart';
 import 'package:todo_app/models/task.dart';
 
 class TasksNotifier extends StateNotifier<List<Task>> {
-  TasksNotifier() : super([]);
+  TasksNotifier() : super(exampleTasks);
 
   void addTask(Task task) {
     state = [...state, task];
