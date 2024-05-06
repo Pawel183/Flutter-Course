@@ -29,7 +29,7 @@ class _DeletedTasksScreen extends ConsumerState<DeletedTasksScreen> {
 
     void removeTaskPermamently(Task task) {
       setState(() {
-        ref.watch(tasksProvider.notifier).removeTaskPermamently(task);
+        ref.watch(tasksProvider.notifier).removeTaskPermanently(task);
       });
     }
 

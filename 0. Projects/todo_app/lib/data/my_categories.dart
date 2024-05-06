@@ -1,49 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/category.dart';
+
+enum Categories {
+  work,
+  shopping,
+  fitness,
+  learn,
+  entertainment,
+  watching,
+  travel,
+  cleaning,
+  hobbies,
+}
+
 const categories = {
   Categories.work: Category(
     "Work",
-    Color.fromARGB(255, 33, 150, 243),
-    Icon(Icons.work),
+    "FF2196F3", // Color.fromARGB(255, 33, 150, 243)
+    Icons.work,
   ),
   Categories.shopping: Category(
     "Shopping",
-    Color.fromARGB(255, 244, 67, 54), 
-    Icon(Icons.shopping_bag),
+    "FFF44336", // Color.fromARGB(255, 244, 67, 54)
+    Icons.shopping_bag,
   ),
   Categories.fitness: Category(
     "Fitness",
-    Color.fromARGB(255, 139, 195, 74), 
-    Icon(Icons.fitness_center),
+    "FF8BC34A", // Color.fromARGB(255, 139, 195, 74)
+    Icons.fitness_center,
   ),
   Categories.learn: Category(
     "Learn",
-    Color.fromARGB(255, 255, 152, 0), 
-    Icon(Icons.school),
+    "FFFF9800", // Color.fromARGB(255, 255, 152, 0)
+    Icons.school,
   ),
   Categories.entertainment: Category(
     "Entertainment",
-    Color.fromARGB(255, 171, 71, 188), 
-    Icon(Icons.videogame_asset),
+    "FFAB47BC", // Color.fromARGB(255, 171, 71, 188)
+    Icons.videogame_asset,
   ),
   Categories.watching: Category(
     "Watching",
-    Color.fromARGB(255, 255, 193, 7), 
-    Icon(Icons.tv),
+    "FFFFC107", // Color.fromARGB(255, 255, 193, 7)
+    Icons.tv,
   ),
   Categories.travel: Category(
     "Travel",
-    Color.fromARGB(255, 128, 176, 39),
-    Icon(Icons.travel_explore),
+    "FF80C820", // Color.fromARGB(255, 128, 176, 39)
+    Icons.travel_explore,
   ),
   Categories.cleaning: Category(
     "Cleaning",
-    Color.fromARGB(255, 255, 87, 34), 
-    Icon(Icons.cleaning_services),
+    "FFFF5733", // Color.fromARGB(255, 255, 87, 34)
+    Icons.cleaning_services,
   ),
   Categories.hobbies: Category(
     "Hobbies",
-    Color.fromARGB(255, 63, 81, 181), 
-    Icon(Icons.sports_tennis),
+    "FF3F51B5", // Color.fromARGB(255, 63, 81, 181)
+    Icons.sports_tennis,
   ),
 };

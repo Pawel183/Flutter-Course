@@ -66,7 +66,7 @@ class ActiveTaskCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    task.category.icon,
+                    Icon(task.category.iconData),
                     const SizedBox(width: 10),
                     Text(
                       task.category.title,

@@ -1,5 +1,4 @@
 import 'package:todo_app/data/my_categories.dart';
-import 'package:todo_app/models/category.dart';
 import 'package:todo_app/models/task.dart';
 import 'package:uuid/uuid.dart';
 

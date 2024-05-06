@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-enum Categories {
-  work,
-  shopping,
-  fitness,
-  learn,
-  entertainment,
-  watching,
-  travel,
-  cleaning,
-  hobbies,
-}
+part 'category.g.dart';
 
+@HiveType(typeId: 1)
 class Category {
   const Category(
     this.title,
-    this.color,
-    this.icon,
+    this.colorHex,
+    this.iconData,
   );
 
+  @HiveField(0)
   final String title;
-  final Color color;
-  final Icon icon;
+
+  @HiveField(1)
+  final String colorHex;
+
+  @HiveField(2)
+  final IconData iconData;
+
+  Color get color => Color(int.parse(colorHex, radix: 16));
 }

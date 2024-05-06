@@ -49,7 +49,7 @@ class DeletedTaskCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 20),
-                      task.category.icon
+                      Icon(task.category.iconData),
                     ],
                   )
                 ],

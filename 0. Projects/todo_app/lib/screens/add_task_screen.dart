@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/data/my_categories.dart';
-import 'package:todo_app/models/category.dart';
 import 'package:todo_app/models/task.dart';
 import 'package:todo_app/providers/tasks_provider.dart';
 import 'package:uuid/uuid.dart';
@@ -25,14 +24,16 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
 
   void _saveTask() {
     _formKey.currentState!.save();
-    var task = Task(
-      id: uuid.v1(),
-      priority: _selectedPriority,
-      taskLabel: _enteredLabel,
-      category: _selectedCategory!,
-    );
-    ref.read(tasksProvider.notifier).addTask(task);
-    Navigator.pop(context);
+    setState(() {
+      var task = Task(
+        id: uuid.v1(),
+        priority: _selectedPriority,
+        taskLabel: _enteredLabel,
+        category: _selectedCategory!,
+      );
+      ref.read(tasksProvider.notifier).addTask(task);
+      Navigator.pop(context);
+    });
   }
 
   @override
@@ -119,7 +120,7 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
                                 ),
                                 child: Row(
                                   children: [
-                                    category.value.icon,
+                                    Icon(category.value.iconData),
                                     const SizedBox(width: 30),
                                     Text(
                                       category.value.title,
