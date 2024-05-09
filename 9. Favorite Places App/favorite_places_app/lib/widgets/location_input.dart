@@ -42,6 +42,8 @@ class _LocationInputState extends State<LocationInput> {
       );
       _isGettingLocation = false;
     });
+
+    widget.onSelectLocation(_pickedLocation!);
   }
 
   void _getCurrentLocation() async {
@@ -80,8 +82,6 @@ class _LocationInputState extends State<LocationInput> {
     }
 
     _savePlace(lat, lng);
-
-    widget.onSelectLocation(_pickedLocation!);
   }
 
   void _selectOnMap() async {

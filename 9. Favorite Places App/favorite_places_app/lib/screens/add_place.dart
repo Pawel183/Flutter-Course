@@ -12,11 +12,11 @@ class AddPlaceScreen extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<AddPlaceScreen> createState() {
-    return _AddPlaceScrrenState();
+    return _AddPlaceScreenState();
   }
 }
 
-class _AddPlaceScrrenState extends ConsumerState<AddPlaceScreen> {
+class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
   File? _selectedImage;
   PlaceLocation? _selectedLocation;
@@ -33,6 +33,7 @@ class _AddPlaceScrrenState extends ConsumerState<AddPlaceScreen> {
     ref
         .read(userPlacesProvider.notifier)
         .addPlace(enteredTitle, _selectedImage!, _selectedLocation!);
+
     Navigator.of(context).pop();
   }
 
@@ -46,22 +47,18 @@ class _AddPlaceScrrenState extends ConsumerState<AddPlaceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add new Place"),
+        title: const Text('Add new Place'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             TextField(
-              style: const TextStyle(
-                fontSize: 22.0,
-                color: Color(0xFFbdc6cf),
-              ),
-              decoration: const InputDecoration(
-                labelText: 'Title',
-                fillColor: Colors.white,
-              ),
+              decoration: const InputDecoration(labelText: 'Title'),
               controller: _titleController,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
             const SizedBox(height: 10),
             ImageInput(
@@ -69,15 +66,17 @@ class _AddPlaceScrrenState extends ConsumerState<AddPlaceScreen> {
                 _selectedImage = image;
               },
             ),
-            const SizedBox(height: 20),
-            LocationInput(onSelectLocation: (location) {
-              _selectedLocation = location;
-            }),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
+            LocationInput(
+              onSelectLocation: (location) {
+                _selectedLocation = location;
+              },
+            ),
+            const SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: _savePlace,
               icon: const Icon(Icons.add),
-              label: const Text("Add Place"),
+              label: const Text('Add Place'),
             ),
           ],
         ),
